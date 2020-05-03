@@ -1,29 +1,19 @@
 # whatsappfy
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## About
 
-## Install
+Web extension that adds a context menu item that start a whatsapp chat with the selected phone number.
 
-	$ npm install
+## How to build
 
-## Development
+Install the dependencies
 
-    npm run dev chrome
-    npm run dev firefox
-    npm run dev opera
-    npm run dev edge
+```sh
+npm install
+```
 
-## Build
+Generate the extension package by vendor (firefox | chrome | edge | opera)
 
-    npm run build chrome
-    npm run build firefox
-    npm run build opera
-    npm run build edge
-
-## Environment
-
-The build tool also defines a variable named `process.env.NODE_ENV` in your scripts. 
-
-## Docs
-
-* [webextension-toolbox](https://github.com/HaNdTriX/webextension-toolbox)
+```sh
+npm run build --vendor VENDOR_NAME
+```
