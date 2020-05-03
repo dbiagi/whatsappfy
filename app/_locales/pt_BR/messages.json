@@ -8,11 +8,11 @@
         "description": "Application short name"
     },
     "appDescription": {
-        "message": "Adds a context menu item that start a whatsapp chat with the selected phone number.",
+        "message": "Adiciona opção no menu de contexto que inicia conversa no whatsap para o número de telefone selecionado.",
         "description": "Application description"
     },
     "contextMenuAction": {
-        "message": "Send a Message",
+        "message": "Enviar Mensagem",
         "description": "Context menu action label"
     }
 }

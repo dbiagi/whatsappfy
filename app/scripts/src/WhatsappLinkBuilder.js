@@ -4,7 +4,7 @@ export class WhatsappApiLinkBuilder {
     }
 
     get WHATSAPP_API_LINK() {
-        return 'https://web.whatsapp.com/send'
+        return 'https://api.whatsapp.com/send'
     }
 
     withPhone(phone) {

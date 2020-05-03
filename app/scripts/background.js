@@ -1,5 +1,6 @@
 const lang = browser.i18n.getMessage
 const GOTO_BTN_ID = 'goto-whatsapp'
+
 import { WhatsappApiLinkBuilder } from "./src/WhatsappLinkBuilder";
 import { PhoneHelper } from "./src/PhoneHelper";
 
@@ -20,13 +21,11 @@ browser.menus.onClicked.addListener((info, tab) => {
         return
     }
 
-    console.log('phone before replace', phone)
-
     phone = PhoneHelper.normalize(phone)
 
-    console.log('phone after replace', phone)
+    const url = new WhatsappApiLinkBuilder()
+        .withPhone(phone)
+        .build()
 
-    const url = new WhatsappApiLinkBuilder().withPhone(phone).build()
-
-    // browser.tabs.create({url})
+    browser.tabs.create({url})
 })
