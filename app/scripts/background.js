@@ -1,16 +1,19 @@
-const lang = browser.i18n.getMessage
 const GOTO_BTN_ID = 'goto-whatsapp'
+const lang = browser.i18n.getMessage
+let settings = null
+
+browser.storage.local.get().then(results => settings = results)
 
 import { WhatsappApiLinkBuilder } from "./src/WhatsappLinkBuilder";
 import { PhoneHelper } from "./src/PhoneHelper";
 
-browser.menus.create({
+browser.contextMenus.create({
     id: GOTO_BTN_ID,
     title: lang('contextMenuAction'),
     contexts: ["link", "selection"]
 });
 
-browser.menus.onClicked.addListener((info, tab) => {
+browser.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId !== GOTO_BTN_ID) {
         return
     }
@@ -23,9 +26,13 @@ browser.menus.onClicked.addListener((info, tab) => {
 
     phone = PhoneHelper.normalize(phone)
 
+    if (!PhoneHelper.hasCountryPrefix(phone) && 'country_prefix' in settings) {
+        phone = settings['country_prefix'] + phone
+    }
+
     const url = new WhatsappApiLinkBuilder()
         .withPhone(phone)
         .build()
 
-    browser.tabs.create({url})
+    browser.tabs.create({ url })
 })

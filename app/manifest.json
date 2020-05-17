@@ -2,7 +2,7 @@
     "name": "__MSG_appName__",
     "short_name": "__MSG_appShortName__",
     "description": "__MSG_appDescription__",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "manifest_version": 2,
     "default_locale": "en",
     "icons": {
@@ -16,6 +16,11 @@
         ]
     },
     "permissions": [
-        "contextMenus"
-    ]
+        "contextMenus", "storage"
+    ],
+    "options_ui": {
+        "page": "scripts/options.html",
+        "browser_style": true,
+        "chrome_style": true
+    }
 }

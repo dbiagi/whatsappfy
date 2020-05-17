@@ -1,17 +1,25 @@
+import phoneCodes from './CountryPhoneCodes'
+
+const PHONE_MIN_SIZE = 10
+const PHONE_MAX_SIZE = 14
+
+let codes = []
+
+phoneCodes.forEach(countryCode => codes.push(countryCode.code))
+
 export class PhoneHelper {
     static isPhone(phone) {
         const normalized = this.normalize(phone)
 
-        return normalized.length === 12 || normalized.length === 13
+        return normalized.length >= PHONE_MIN_SIZE && normalized.length <= PHONE_MAX_SIZE
     }
 
     static hasCountryPrefix(phone) {
-        if (phone.length === 12 || phone.length === 13) {
-            return true
+        for (let index = 0; index < codes.length; index++) {
+            if (phone.match(`/^${codes[index]}/`)) {
+                return true
+            }
         }
-        
-        // @TODO Add suport to multiple phone country prefix depending on user preference
-        return phone.match(/^55/)
     }
 
     static clearNonDigits(phone) {
@@ -20,10 +28,6 @@ export class PhoneHelper {
 
     static normalize(phone) {
         let normalized = this.clearNonDigits(phone)
-
-        if (!this.hasCountryPrefix(normalized)) {
-            normalized = '55' + normalized
-        }
 
         return normalized
     }

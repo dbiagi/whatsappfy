@@ -14,5 +14,11 @@
     "contextMenuAction": {
         "message": "Enviar Mensagem",
         "description": "Context menu action label"
+    },
+    "countryPrefixLabel": {
+        "message": "Prefixo do País"
+    },
+    "saveSettingsButton": {
+        "message": "Salvar"
     }
 }
