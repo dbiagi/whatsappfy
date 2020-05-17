@@ -20,6 +20,8 @@ export class PhoneHelper {
                 return true
             }
         }
+
+        return false
     }
 
     static clearNonDigits(phone) {
